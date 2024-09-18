@@ -29,9 +29,10 @@ Route::post('login', [AuthController::class, 'login']);
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-
     Route::get('logout', [AuthController::class, 'logout']);
     Route::get('/employees', [EmployeeController::class, 'index']);
-
-
+    Route::post('/employees/create', [EmployeeController::class, 'store']);
+    Route::get('/employees/{id}', [EmployeeController::class, 'show']);
+    Route::put('/employees/{id}', [EmployeeController::class, 'update']);
+    Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']);
 });
